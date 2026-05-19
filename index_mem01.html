@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《追思 拳止，道未止》：吳國忠師爺逝世十週年</title>
+    <!-- 使用 Tailwind CSS 進行響應式設計 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入思源宋體與思源黑體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-color: #fcfaf2;
+            --ink-color: #1a1a1a;
+            --gold-accent: #b4975a;
+            --bright-gold: #FFD700;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background-color: #e5e5e5;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            color: var(--ink-color);
+            margin: 0; padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-size: 1rem;
+        }
+        
+        /* 頂部橫幅 */
+        .banner-container {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        /* 導航列設定 */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            z-index: 50;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+        }
+
+        @media (min-width: 1024px) {
+            .banner-container { min-height: 600px; }
+            .logo-img { width: 160px; height: 160px; }
+            .desktop-menu { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+
+        .desktop-menu {
+            display: none;
+            gap: 40px;
+        }
+        .nav-link {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 5px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+        }
+        .nav-link:hover {
+            color: var(--bright-gold);
+            border-bottom-color: var(--bright-gold);
+        }
+
+        /* 手機版選單按鈕 */
+        .mobile-menu-btn {
+            color: #FFEB3B;
+            filter: drop-shadow(0 0 15px rgba(255, 235, 59, 1)) drop-shadow(0 0 5px rgba(0,0,0,1));
+            transition: transform 0.2s;
+        }
+
+        #mobile-dropdown {
+            display: none;
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background: rgba(15, 15, 15, 0.98);
+            border: 1px solid var(--gold-accent);
+            border-radius: 12px;
+            padding: 10px 0;
+            width: 200px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        }
+        #mobile-dropdown a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .gold-text {
+            color: var(--bright-gold);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+        }
+
+        /* 背景區塊 */
+        .section-with-bg {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px 12px 0 0;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .section-with-bg { aspect-ratio: 16 / 11; }
+        }
+
+        .clear-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.12));
+            backdrop-filter: brightness(1.1);
+            z-index: 1;
+        }
+        .section-content-top { position: relative; z-index: 2; width: 100%; text-align: center; padding: 2rem 1rem; }
+        .section-content-bottom { position: relative; z-index: 5; width: 100%; }
+
+        .audio-embed-container {
+            width: 100%;
+            height: 70px; 
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            transform: translateY(25px);
+        }
+        .audio-embed-container iframe { width: 100%; height: 100%; border: none; opacity: 0.95; }
+        
+        .description-card {
+            background: white;
+            padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+            border-bottom: 8px solid var(--gold-accent);
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            text-shadow: 0 2px 15px rgba(255,255,255,1);
+            color: var(--ink-color);
+        }
+        
+        @media (min-width: 768px) {
+            .section-title { font-size: 2.5rem; letter-spacing: 0.3em; }
+        }
+
+        .intro-text-p {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .lyrics-box {
+            line-height: 2.5;
+            letter-spacing: 0.05em;
+            text-align: center;
+            max-width: 95%;
+            margin: 0 auto;
+            font-size: 1.02rem;
+            padding: 0 10px;
+        }
+        @media (min-width: 768px) {
+            .lyrics-box { font-size: 1.25rem; line-height: 2.8; letter-spacing: 0.12em; }
+        }
+        .lyrics-part { 
+            margin-bottom: 3rem; 
+            word-break: keep-all; 
+            overflow-wrap: break-word;
+            display: inline-block;
+            width: 100%;
+        }
+        .lyrics-label { color: var(--gold-accent); font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 1rem; opacity: 0.8; }
+
+        /* 思源黑體副標題樣式 */
+        .sans-footer-quote {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            font-weight: 700;
+            color: #4a4a4a;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .sans-footer-quote { font-size: 2rem; }
+        }
+
+        .go-home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: var(--gold-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        .youtube-btn {
+            background-color: #c4302b;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 9999px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 12px 35px rgba(196, 48, 43, 0.4);
+            transition: all 0.3s;
+        }
+
+        /* 師爺照片樣式：縮小 50% (原 600px 改為 300px) */
+        .shiye-photo-frame {
+            max-width: 300px;
+            margin: 4rem auto;
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border: 1px solid #ddd;
+        }
+        .shiye-photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 浮動返回首頁 -->
+    <div class="go-home-btn cursor-pointer" onclick="window.scrollTo(0,0)" title="Go Home">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </div>
+
+    <!-- 頂部導航 -->
+    <nav class="top-nav">
+        <a href="#top">
+            <img src="https://lh3.googleusercontent.com/d/1AENOwNYDYZoNA7ibrWqv4SK0H-edvzRu" alt="神龍太極 Logo" class="logo-img">
+        </a>
+        
+        <div class="desktop-menu">
+            <a href="#song1" class="nav-link">追思曲一</a>
+            <a href="#song2" class="nav-link">追思曲二</a>
+            <a href="#video" class="nav-link">追思影片</a>
+            <a href="#lyrics" class="nav-link">歌詞全文</a>
+        </div>
+
+        <button class="mobile-menu-btn p-3" onclick="toggleMenu()">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+
+        <div id="mobile-dropdown">
+            <a href="#song1" onclick="toggleMenu()">追思曲一</a>
+            <a href="#song2" onclick="toggleMenu()">追思曲二</a>
+            <a href="#video" onclick="toggleMenu()">追思影片</a>
+            <a href="#lyrics" onclick="toggleMenu()">歌詞全文</a>
+        </div>
+    </nav>
+
+    <!-- 頂部橫幅：加入弟子敬誌 -->
+    <div id="top" class="banner-container">
+        <div class="banner-text-box text-center px-4">
+            <p class="text-6xl md:text-9xl font-bold mb-10 tracking-[0.3em] leading-tight gold-text">追思</p>
+            <h1 class="text-4xl md:text-7xl font-bold mb-8 tracking-[0.25em] leading-tight text-white whitespace-nowrap">《拳止，道未止》</h1>
+            <p class="text-xl md:text-3xl tracking-[0.2em] font-light opacity-90 text-white leading-relaxed mb-4">吳國忠老師/師爺 逝世十週年</p>
+            <!-- 新增文字區塊 -->
+            <p class="text-lg md:text-2xl text-white opacity-80 tracking-[0.3em]">國際神龍學會全體弟子敬誌</p>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- 追思曲 - 1 -->
+        <div id="song1" class="section-with-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1A2Bq6BI42pYTwewxSBGSxwlAgGDXwEjw');">
+            <div class="clear-overlay"></div>
+            <div class="section-content-top">
+                <h2 class="section-title">追思曲-1：史詩劇院版</h2>
+            </div>
+            <div class="section-content-bottom">
+                <div class="audio-embed-container">
+                    <iframe src="https://drive.google.com/file/d/1YZAk3QC-uKKjww9bAVTtLE8lU6rqjSG_/preview"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="description-card">
+            <h4 class="font-bold border-b-2 border-stone-100 mb-6 pb-2 text-xl text-stone-700">音樂介紹：</h4>
+            <p class="intro-text-p text-stone-600">
+                史詩劇院版以宏大且具備歷史滄桑感的音樂氛圍為核心。它描繪了師爺少年離家、踏入戰火，最終在太極門前遇見真人的壯闊生命旅程。交響樂的厚重感象徵著「從剛猛轉向大乘圓融」的道藝之路。
+            </p>
+        </div>
+
+        <!-- 追思曲 - 2 -->
+        <div id="song2" class="section-with-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1e9hAd3_jzvVW3NeUz7W0p1axW0uC-_jm');">
+            <div class="clear-overlay"></div>
+            <div class="section-content-top">
+                <h2 class="section-title">追思曲-2：國樂太極禪風</h2>
+            </div>
+            <div class="section-content-bottom">
+                <div class="audio-embed-container">
+                    <iframe src="https://drive.google.com/file/d/1GKT46xsdIq-hWwAChtWetlryzO86_iOJ/preview"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="description-card">
+            <h4 class="font-bold border-b-2 border-stone-100 mb-6 pb-2 text-xl text-stone-700">音樂介紹：</h4>
+            <p class="intro-text-p text-stone-600">
+                此版本強調寧靜、通透與空靈。音樂中融合了國樂的典雅與太極的律動，呈現出「氣行如水，流轉周身」的心法真諦。旋律柔中藏剛，協助聽者在「鬆沉一氣」中入虛空，重新體悟神龍太極的內在流動。
+            </p>
+        </div>
+
+        <!-- 追思影片區塊：移到歌詞前 -->
+        <div id="video" class="section-with-bg text-center" style="background-image: url('https://lh3.googleusercontent.com/d/17qX2rwwu9GaeQO8sG6-hJf4_GS7Z_-V3');">
+            <div class="clear-overlay"></div>
+            <div class="section-content-top pt-12">
+                <h3 class="text-3xl font-bold mb-8 text-stone-900 tracking-widest drop-shadow-md">追思影音影片</h3>
+                <a href="https://youtu.be/RdxeHqUyMT0?si=1gyS8noCD2sTSJ6E" target="_blank" class="youtube-btn hover:scale-105 transition">
+                    <svg class="w-12 h-12 mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    觀看追思影片
+                </a>
+            </div>
+            <div class="section-content-bottom">
+                <div class="audio-embed-container" style="height: 40px; background: transparent; transform: none;"></div>
+            </div>
+        </div>
+        <div class="description-card">
+            <p class="text-stone-800 text-xl italic font-bold text-center">
+                （男女合輪唱：國樂太極版，動靜道 陰陽和諧）
+            </p>
+        </div>
+
+        <!-- 歌詞全文區塊 -->
+        <div id="lyrics" class="content-card mt-16">
+            <h2 class="section-title text-stone-800 text-center mb-12">歌詞全文</h2>
+            <div class="lyrics-box text-stone-700">
+                <h3 class="text-3xl font-bold mb-10 border-b-2 pb-6">《 拳止 ，道未止 》</h3>
+                
+                <div class="lyrics-part">
+                    <span class="lyrics-label"># 旁白</span>
+                    江海悠悠 歲月如拳 一位武者 以一生尋道<br>
+                    從戰場到太極 由剛猛入柔和<br>
+                    他留下的 不是名聲 而是一條 通往大道的路
+                </div>
+
+                <div class="lyrics-part">
+                    <span class="lyrics-label">Verse 1</span>
+                    溫州江海 起風雲 少年離家 踏征程 掌中藏勁 為護身<br>
+                    戰場孤影 過寒春 誰知鐵血 多年後 一念回身 問乾坤<br>
+                    拳未動 心已靜 太極門前 遇見真人
+                </div>
+
+                <div class="lyrics-part font-bold text-stone-900 border-y-2 py-10 bg-stone-50/50 rounded-lg">
+                    <span class="lyrics-label">Chorus</span>
+                    陰陽二氣 太極成圓 柔中藏剛 化動為玄<br>
+                    氣行如水 流轉周身 以神帥氣 血動體隨<br>
+                    金梁換柱 先天開展 清升濁降 天地相連<br>
+                    節節貫串 荷花迎風 大乘一動 萬法歸元
+                </div>
+
+                <div class="lyrics-part">
+                    <span class="lyrics-label">Narration 2（旁白）</span>
+                    真正的功夫 不是擊敗別人 而是 放下自己<br>
+                    他用一生證明 太極 不只是拳 是 道
+                </div>
+
+                <div class="lyrics-part font-bold text-stone-900 border-y-2 py-10 bg-stone-50/50 rounded-lg">
+                    <span class="lyrics-label">Final Chorus（昇華版）</span>
+                    師恩似海 歲月如流 天上人間 十週年<br>
+                    三純太極 道脈相連 理氣象合 拳劍功<br>
+                    動靜之間 皆是修緣 陰陽開合 自在其間<br>
+                    若問此生 最大心願 太極常在 人心田
+                </div>
+
+                <div class="lyrics-part italic text-stone-500">
+                    <span class="lyrics-label">Ending Poem（結尾）</span>
+                    拳止 道未止 人去 風仍在<br>
+                    一念陰陽 天地長存 太極 仍在人間
+                </div>
+            </div>
+        </div>
+
+        <!-- 吳國忠師爺照片：縮小為原本的一半 -->
+        <div class="shiye-photo-frame">
+            <img src="https://lh3.googleusercontent.com/d/1J9zO229XQNZOiUtPSeZ68r-4BxsjXQp8" alt="吳國忠師爺照片" onerror="this.src='https://drive.google.com/thumbnail?id=1J9zO229XQNZOiUtPSeZ68r-4BxsjXQp8&sz=w1000'">
+            <p class="text-center text-stone-400 mt-4 italic text-sm">吳國忠老師/師爺 紀念像</p>
+        </div>
+
+    </div>
+
+    <!-- 頁尾：調整樣式 -->
+    <footer class="py-24 text-center text-stone-500 border-t border-stone-200 mt-20">
+        <!-- 改為思源黑體與副標題字體大小 -->
+        <p class="sans-footer-quote">「拳止 道未止 人去 風仍在 一念陰陽 天地長存」</p>
+        <p class="text-lg font-bold tracking-[0.4em] text-stone-400 uppercase">神龍太極 傳承紀念</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
